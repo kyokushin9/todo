@@ -1,16 +1,45 @@
-# React + Vite
+# Todo App — Список задач
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## О проекте
+Что за приложение: добавление задач, чекбоксы, фильтры
+Все/Активные/Выполненные, счётчик остатка, очистка.
 
-Currently, two official plugins are available:
+## Технологии
+React + Vite (JavaScript)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Запуск локально
+npm install
+npm run dev
 
-## React Compiler
+## Сборка
+npm run build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Деплой на прод (твой хостинг)
+### Ветки
+- main — исходники
+- deploy — собранные файлы сайта
 
-## Expanding the Oxlint configuration
+### Как деплоить (из папки проекта)
+# 1. Собираем новую версию
+npm run build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+# 2. Переключаемся на ветку-витрину
+git checkout deploy
+
+# 3. Чистим старые файлы сайта
+git rm -r -q .
+
+# 4. Кладём новую сборку
+Copy-Item dist\* . -Recurse
+
+# 5. Фиксируем и публикуем
+git add .
+git commit -m "update"
+git push origin deploy
+
+# 6. Возвращаемся на исходники
+git checkout main
+
+
+### Как обновить сайт на сервере
+ssh ... → cd ... → git pull
